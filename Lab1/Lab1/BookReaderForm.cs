@@ -13,13 +13,12 @@ namespace Lab1
 
         private void showInfoButton_Click(object sender, EventArgs e)
         {
-            var book = GetSelectedBook((int)booksListBox.SelectedValue);
+            var book = GetSelectedBook(booksListBox.SelectedIndex);
             bookInfoBox.Text = $"Title: {book.Title}, Author: {book.Author}, Creation year: {book.Year}";
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            booksListBox.DataSource = null;
             booksListBox.Items.Clear();
             LoadBookList();
             bookInfoBox.Text = String.Empty;
@@ -27,23 +26,16 @@ namespace Lab1
 
         private void LoadBookList()
         {
-            booksListBox.DataSource = GetBookList();
-            booksListBox.DisplayMember = "Title";
-            booksListBox.ValueMember = "Id";
+            var s = GetBookList();
+            booksListBox.Items.AddRange(GetBookList());
         }
 
-        private List<object> GetBookList()
+        private string[] GetBookList()
         {
             string path = Path.Combine(Directory.GetCurrentDirectory(), "books.txt");
 
             return File.ReadLines(path)
-                .Select
-                ((book, counter) => new
-                {
-                    Id = counter,
-                    Title = book.Substring(0, book.IndexOf(':'))
-                })
-                .ToList<object>();
+                .Select(book => book.Substring(0, book.IndexOf(':'))).ToArray();
         }
 
         private Book GetSelectedBook(int id)
