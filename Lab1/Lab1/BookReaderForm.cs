@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace Lab1
 {
     public partial class BookReaderForm : Form
@@ -50,6 +48,11 @@ namespace Lab1
                 Author = line[1],
                 Year = int.Parse(line[2])
             };
+        }
+
+        private void BookReaderForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
