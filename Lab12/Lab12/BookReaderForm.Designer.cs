@@ -1,4 +1,4 @@
-﻿namespace Lab1
+﻿namespace Lab12
 {
     partial class BookReaderForm
     {
@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.maxPages = new System.Windows.Forms.Label();
+            this.UpdateBook = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // booksListBox
@@ -50,7 +51,7 @@
             // 
             // showInfoButton
             // 
-            this.showInfoButton.Location = new System.Drawing.Point(280, 174);
+            this.showInfoButton.Location = new System.Drawing.Point(174, 176);
             this.showInfoButton.Name = "showInfoButton";
             this.showInfoButton.Size = new System.Drawing.Size(179, 42);
             this.showInfoButton.TabIndex = 1;
@@ -122,23 +123,29 @@
             this.maxPages.Size = new System.Drawing.Size(0, 20);
             this.maxPages.TabIndex = 10;
             // 
+            // UpdateBook
+            // 
+            this.UpdateBook.Location = new System.Drawing.Point(391, 176);
+            this.UpdateBook.Name = "UpdateBook";
+            this.UpdateBook.Size = new System.Drawing.Size(185, 44);
+            this.UpdateBook.TabIndex = 11;
+            this.UpdateBook.Text = "Update";
+            this.UpdateBook.UseVisualStyleBackColor = true;
+            // 
             // BookReaderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.maxPages);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonNext);
-            this.Controls.Add(this.buttonPrev);
-            this.Controls.Add(this.bookTextBox);
-            this.Controls.Add(this.bookInfoBox);
-            this.Controls.Add(this.showInfoButton);
+            this.ClientSize = new System.Drawing.Size(881, 535);
             this.Controls.Add(this.booksListBox);
+            this.Controls.Add(this.showInfoButton);
+            this.Controls.Add(this.bookInfoBox);
+            this.Controls.Add(this.bookTextBox);
+            this.Controls.Add(this.buttonPrev);
+            this.Controls.Add(this.buttonNext);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.maxPages);
+            this.Controls.Add(this.UpdateBook);
             this.Name = "BookReaderForm";
-            this.Text = "Books";
-            this.Load += new System.EventHandler(this.BookReaderForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +162,6 @@
         private Label label1;
         private Label label2;
         private Label maxPages;
+        private Button UpdateBook;
     }
 }

@@ -1,7 +1,12 @@
-namespace Lab1
+using System.Data.OleDb;
+
+namespace Lab12
 {
     public partial class BookReaderForm : Form
     {
+        public string connectionString = "Provider=SQLNCLIRDA11;Data Source=(local);Integrated Security=SSPI;Initial Catalog=Library";
+        public BookSet bookSet;
+
         private Book selectedBook;
         private int currentPage = 0;
 
@@ -10,6 +15,8 @@ namespace Lab1
         {
             InitializeComponent();
             booksListBox.SelectionMode = SelectionMode.One;
+            bookSet = new BookSet();
+
             LoadBookList();
         }
 
@@ -20,12 +27,12 @@ namespace Lab1
             this.selectedBook = new Book();
             bool isSucceded = true;
             try
-            {
-                this.selectedBook = GetSelectedBookInfo(booksListBox.SelectedIndex);
+            {  
+                this.selectedBook = GetSelectedBookInfo(int.Parse(booksListBox.SelectedValue.ToString()));
             } catch(Exception)
             {
                 isSucceded = false;
-                MessageBox.Show("Ошибка чтения информации из файла. Файл либо данные повреждены или отсутвуют.");
+                MessageBox.Show("Cannot read book info from database.");
             }
                    
             bookInfoBox.Text = isSucceded ?
@@ -39,7 +46,7 @@ namespace Lab1
             this.currentPage = 0;
             
             LoadNextPage();
-            maxPages.Text = $"Max: {GetSelectedBookMaxPage().ToString()}";
+            //maxPages.Text = $"Max: {GetSelectedBookMaxPage()}";
         }
 
         private long GetSelectedBookMaxPage()
@@ -82,16 +89,17 @@ namespace Lab1
                         pageNumber++;
                     }
                 }
-            }catch(Exception)
+            }
+            catch(Exception)
             {
-               MessageBox.Show("Ошибка чтения информации из файла. Файл либо данные повреждены или отсутвуют.");
+               MessageBox.Show("Cannot read book text from file. File or data is damaged or don't exists.");
             }
            
         }
 
         private string GetSelectedBookPath()
         {
-            string path = @"D:\Study\SSP\Lab1\v1library\";
+            string path = @"D:\Study\SSP\Lab12\library\";
             path += selectedBook.TextLink;
             return path;
         }
@@ -100,41 +108,50 @@ namespace Lab1
         {
             try
             {
-                booksListBox.Items.AddRange(GetBookList());
+                GetBookList();
+                booksListBox.DataSource = bookSet.Books;
+                booksListBox.DisplayMember = "Name";
+                booksListBox.ValueMember = "Id";
             }
             catch(Exception)
             {
-                MessageBox.Show("Ошибка чтения информации из файла.");
+                MessageBox.Show("Cannot read from the database.");
             }
             
         }
 
-        private string[] GetBookList()
+        private void GetBookList()
         {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "books.txt");
+            string sql = "SELECT * FROM Books";
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            {
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sql, connection);
 
-            return File.ReadLines(path)
-                .Select(book => book.Substring(0, book.IndexOf(':'))).ToArray();
+                adapter.Fill(bookSet.Books);
+            }
+
+            //string path = Path.Combine(Directory.GetCurrentDirectory(), "books.txt");
+
+            //return File.ReadLines(path)
+            //    .Select(book => book.Substring(0, book.IndexOf(':'))).ToArray();
         }
 
         private Book GetSelectedBookInfo(int id)
         {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "books.txt");
+            //string path = Path.Combine(Directory.GetCurrentDirectory(), "books.txt");
 
-            var line = File.ReadLines(path).ElementAtOrDefault(id).Split(':');
+            //var line = File.ReadLines(path).ElementAtOrDefault(id).Split(':');
+
+            var book = bookSet.Books.FirstOrDefault(x => x.Id == id);
 
             return new Book()
             {
-                Title = line[0],
-                Author = line[1],
-                Year = int.Parse(line[2]),
-                TextLink = line[3]
+                Id = book.Id,
+                Title = book.Name,
+                Author = book.Author,
+                Year = book.IssueDateYear,
+                TextLink = book.BookFileName
             };
-        }
-
-        private void BookReaderForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
@@ -147,6 +164,25 @@ namespace Lab1
         {
             if (selectedBook == null) return;
             LoadNextPage();
+        }
+
+        private void UpdateBook_Click(object sender, EventArgs e)
+        {
+            if (booksListBox.SelectedIndex < 0) return;
+            Book book = new Book();
+            try
+            {
+                book = GetSelectedBookInfo(int.Parse(booksListBox.SelectedValue.ToString()));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cannot read book info from database.");
+            }
+
+            var bookEditForm = new BookEditForm(this, book);
+            bookEditForm.ShowDialog();
+
+            LoadBookList();
         }
     }
 }
