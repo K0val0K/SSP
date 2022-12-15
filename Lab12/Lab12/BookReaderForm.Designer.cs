@@ -131,6 +131,7 @@
             this.UpdateBook.TabIndex = 11;
             this.UpdateBook.Text = "Update";
             this.UpdateBook.UseVisualStyleBackColor = true;
+            this.UpdateBook.Click += new System.EventHandler(this.UpdateBook_Click);
             // 
             // BookReaderForm
             // 

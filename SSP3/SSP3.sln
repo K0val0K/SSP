@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSP3_PAIN", "SSP3_PAIN\SSP3_PAIN.csproj", "{7B062D26-FA77-4BF5-B1C8-A3C16C2AA1A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B062D26-FA77-4BF5-B1C8-A3C16C2AA1A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B062D26-FA77-4BF5-B1C8-A3C16C2AA1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B062D26-FA77-4BF5-B1C8-A3C16C2AA1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B062D26-FA77-4BF5-B1C8-A3C16C2AA1A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {194F8E7B-4A53-4F7E-886D-AEB584D9F7D4}
+	EndGlobalSection
+EndGlobal

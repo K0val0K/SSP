@@ -399,7 +399,7 @@ namespace Lab12 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BooksRow AddBooksRow(string Name, string Author, int IssueDateYear, string BookFileName) {
+            public BooksRow AddBooksRow(string Name, int Author, int IssueDateYear, string BookFileName) {
                 BooksRow rowBooksRow = ((BooksRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -450,7 +450,7 @@ namespace Lab12 {
                 base.Columns.Add(this.columnId);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnAuthor = new global::System.Data.DataColumn("Author", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnAuthor = new global::System.Data.DataColumn("Author", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAuthor);
                 this.columnIssueDateYear = new global::System.Data.DataColumn("IssueDateYear", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIssueDateYear);
@@ -466,7 +466,6 @@ namespace Lab12 {
                 this.columnId.Unique = true;
                 this.columnName.AllowDBNull = false;
                 this.columnAuthor.AllowDBNull = false;
-                this.columnAuthor.MaxLength = 100;
                 this.columnIssueDateYear.AllowDBNull = false;
                 this.columnBookFileName.AllowDBNull = false;
             }
@@ -633,9 +632,9 @@ namespace Lab12 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Author {
+            public int Author {
                 get {
-                    return ((string)(this[this.tableBooks.AuthorColumn]));
+                    return ((int)(this[this.tableBooks.AuthorColumn]));
                 }
                 set {
                     this[this.tableBooks.AuthorColumn] = value;

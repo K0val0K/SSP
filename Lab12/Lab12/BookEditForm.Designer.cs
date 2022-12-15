@@ -33,10 +33,10 @@
             this.BookIssueYearLabel = new System.Windows.Forms.Label();
             this.BookTextFileLabel = new System.Windows.Forms.Label();
             this.BookName = new System.Windows.Forms.TextBox();
-            this.BookAuthor = new System.Windows.Forms.TextBox();
             this.BookIssueYear = new System.Windows.Forms.TextBox();
             this.BookTextFilename = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.authorsComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // BookNameLabel
@@ -82,13 +82,6 @@
             this.BookName.Size = new System.Drawing.Size(230, 27);
             this.BookName.TabIndex = 4;
             // 
-            // BookAuthor
-            // 
-            this.BookAuthor.Location = new System.Drawing.Point(264, 166);
-            this.BookAuthor.Name = "BookAuthor";
-            this.BookAuthor.Size = new System.Drawing.Size(230, 27);
-            this.BookAuthor.TabIndex = 5;
-            // 
             // BookIssueYear
             // 
             this.BookIssueYear.Location = new System.Drawing.Point(264, 253);
@@ -113,15 +106,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // authorsComboBox
+            // 
+            this.authorsComboBox.FormattingEnabled = true;
+            this.authorsComboBox.Location = new System.Drawing.Point(264, 167);
+            this.authorsComboBox.Name = "authorsComboBox";
+            this.authorsComboBox.Size = new System.Drawing.Size(230, 28);
+            this.authorsComboBox.TabIndex = 9;
+            // 
             // BookEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.authorsComboBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BookTextFilename);
             this.Controls.Add(this.BookIssueYear);
-            this.Controls.Add(this.BookAuthor);
             this.Controls.Add(this.BookName);
             this.Controls.Add(this.BookTextFileLabel);
             this.Controls.Add(this.BookIssueYearLabel);
@@ -141,9 +142,9 @@
         private Label BookIssueYearLabel;
         private Label BookTextFileLabel;
         private TextBox BookName;
-        private TextBox BookAuthor;
         private TextBox BookIssueYear;
         private TextBox BookTextFilename;
         private Button button1;
+        private ComboBox authorsComboBox;
     }
 }

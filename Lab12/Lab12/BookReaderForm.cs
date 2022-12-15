@@ -1,3 +1,4 @@
+using System.Data;
 using System.Data.OleDb;
 
 namespace Lab12
@@ -143,12 +144,34 @@ namespace Lab12
             //var line = File.ReadLines(path).ElementAtOrDefault(id).Split(':');
 
             var book = bookSet.Books.FirstOrDefault(x => x.Id == id);
+            string authorName;
 
-            return new Book()
+
+            using (OleDbConnection connection = new OleDbConnection(connectionString))
+            {
+                string sqlAuthors = $"SELECT * FROM Authors";
+                List<Author> authors = new();
+                OleDbDataAdapter adapter = new OleDbDataAdapter(sqlAuthors, connection);
+
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                var dt = ds.Tables[0];
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    var cells = row.ItemArray;
+                    authors.Add(new Author() { Id = int.Parse(cells[0].ToString()), Name = cells[1].ToString() });
+                }
+                authorName = authors.FirstOrDefault(x => x.Id == book.Author).Name;
+            }
+
+                return new Book()
             {
                 Id = book.Id,
                 Title = book.Name,
-                Author = book.Author,
+                Author = authorName,
+                AuthorId = book.Author,
                 Year = book.IssueDateYear,
                 TextLink = book.BookFileName
             };
@@ -167,6 +190,8 @@ namespace Lab12
         }
 
         private void UpdateBook_Click(object sender, EventArgs e)
+        
+        
         {
             if (booksListBox.SelectedIndex < 0) return;
             Book book = new Book();

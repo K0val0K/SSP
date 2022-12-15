@@ -67,23 +67,17 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="BookSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="BookSet" msprop:Generator_DataSetName="BookSet">
+  <xs:element name="BookSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="BookSet" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="BookSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Books" msprop:Generator_RowEvHandlerName="BooksRowChangeEventHandler" msprop:Generator_RowDeletedName="BooksRowDeleted" msprop:Generator_RowDeletingName="BooksRowDeleting" msprop:Generator_RowEvArgName="BooksRowChangeEvent" msprop:Generator_TablePropName="Books" msprop:Generator_RowChangedName="BooksRowChanged" msprop:Generator_RowChangingName="BooksRowChanging" msprop:Generator_TableClassName="BooksDataTable" msprop:Generator_RowClassName="BooksRow" msprop:Generator_TableVarName="tableBooks" msprop:Generator_UserTableName="Books">
+        <xs:element name="Books" msprop:Generator_RowClassName="BooksRow" msprop:Generator_RowEvHandlerName="BooksRowChangeEventHandler" msprop:Generator_RowDeletedName="BooksRowDeleted" msprop:Generator_RowDeletingName="BooksRowDeleting" msprop:Generator_RowEvArgName="BooksRowChangeEvent" msprop:Generator_TablePropName="Books" msprop:Generator_RowChangedName="BooksRowChanged" msprop:Generator_UserTableName="Books" msprop:Generator_RowChangingName="BooksRowChanging" msprop:Generator_TableClassName="BooksDataTable" msprop:Generator_TableVarName="tableBooks">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" type="xs:string" />
-              <xs:element name="Author" msprop:Generator_ColumnPropNameInRow="Author" msprop:Generator_ColumnPropNameInTable="AuthorColumn" msprop:Generator_ColumnVarNameInTable="columnAuthor" msprop:Generator_UserColumnName="Author">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="IssueDateYear" msprop:Generator_ColumnPropNameInRow="IssueDateYear" msprop:Generator_ColumnPropNameInTable="IssueDateYearColumn" msprop:Generator_ColumnVarNameInTable="columnIssueDateYear" msprop:Generator_UserColumnName="IssueDateYear" type="xs:int" />
-              <xs:element name="BookFileName" msprop:Generator_ColumnPropNameInRow="BookFileName" msprop:Generator_ColumnPropNameInTable="BookFileNameColumn" msprop:Generator_ColumnVarNameInTable="columnBookFileName" msprop:Generator_UserColumnName="BookFileName" type="xs:string" />
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" type="xs:string" />
+              <xs:element name="Author" msprop:Generator_UserColumnName="Author" msprop:Generator_ColumnPropNameInTable="AuthorColumn" msprop:Generator_ColumnPropNameInRow="Author" msprop:Generator_ColumnVarNameInTable="columnAuthor" type="xs:int" />
+              <xs:element name="IssueDateYear" msprop:Generator_UserColumnName="IssueDateYear" msprop:Generator_ColumnPropNameInTable="IssueDateYearColumn" msprop:Generator_ColumnPropNameInRow="IssueDateYear" msprop:Generator_ColumnVarNameInTable="columnIssueDateYear" type="xs:int" />
+              <xs:element name="BookFileName" msprop:Generator_UserColumnName="BookFileName" msprop:Generator_ColumnPropNameInTable="BookFileNameColumn" msprop:Generator_ColumnPropNameInRow="BookFileName" msprop:Generator_ColumnVarNameInTable="columnBookFileName" type="xs:string" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
